@@ -52,4 +52,8 @@ export const CustomWrapper = styled.div`
   border: 2px solid red;
   border-radius: 5px;
   margin: 10px 0;
+
+  p {
+    max-width: 90%;
+  }
 `;

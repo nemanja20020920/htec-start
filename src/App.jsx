@@ -12,9 +12,7 @@ function App() {
     <>
       <CustomWrapper>
         <h1>Mailbox</h1>
-        <p style={{ maxWidth: '90%' }}>
-          Type the name of email sender or subject of email to search.
-        </p>
+        <p>Type the name of email sender or subject of email to search.</p>
       </CustomWrapper>
       <CustomSearch setFilteredMails={setFilteredMails} />
       <Pagination items={filteredMails} itemsPerPage={2} />

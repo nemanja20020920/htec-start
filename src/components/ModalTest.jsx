@@ -1,52 +1,31 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import { useState } from 'react';
 import { CustomModal } from '../styles/Modal';
-
-// const customStyles = {
-//   content: {
-//     top: '50%',
-//     left: '50%',
-//     right: 'auto',
-//     bottom: 'auto',
-//     marginRight: '-50%',
-//     transform: 'translate(-50%, -50%)',
-//   },
-// };
 
 const ModalTest = ({ mail }) => {
   let subtitle;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-
-  function openModal() {
-    setIsOpen(true);
-  }
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   function afterOpenModal() {
-    // references are now sync'd and can be accessed.
     subtitle.style.color = '#f00';
-  }
-
-  function closeModal() {
-    setIsOpen(false);
   }
 
   return (
     <div>
-      <button style={{ marginBottom: '10px' }} onClick={openModal}>
+      <button style={{ marginBottom: '10px' }} onClick={() => setIsOpen(true)}>
         Open Modal
       </button>
       <CustomModal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        // style={customStyles}
-        contentLabel="Example Modal"
+        onRequestClose={() => setIsOpen(false)}
+        contentLabel="Custom Modal"
       >
         <h2 ref={(_subtitle) => (subtitle = _subtitle)}>{mail.subject}</h2>
         <p>Name: {mail.user.name}</p>
         <p>Job: {mail.user.job}</p>
         <p>Company: {mail.user.company}</p>
-        <button onClick={closeModal}>close</button>
+        <button onClick={() => setIsOpen(false)}>close</button>
       </CustomModal>
     </div>
   );
