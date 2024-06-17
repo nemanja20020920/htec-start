@@ -23,8 +23,8 @@ const ModalTest = ({ mail }) => {
       >
         <h2 ref={(_subtitle) => (subtitle = _subtitle)}>{mail.subject}</h2>
         <p>Name: {mail.user.name}</p>
-        <p>Job: {mail.user.job}</p>
-        <p>Company: {mail.user.company}</p>
+        <p>Job: {mail.user.job ?? 'No job'}</p>
+        <p>Company: {mail.user.company ?? 'No company'}</p>
         <button onClick={() => setIsOpen(false)}>close</button>
       </CustomModal>
     </div>
